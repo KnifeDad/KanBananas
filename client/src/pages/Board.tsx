@@ -169,7 +169,7 @@ const Board = () => {
                 <select id='filterUser' value={filterUser} onChange={handleFilterUserChange}>
                   <option value='all'>All Users</option>
                   {users.map(user => (
-                    <option key={user.id} value={user.id}>
+                    <option key={user.id?.toString()} value={user.id?.toString() || ''}>
                       {user.username}
                     </option>
                   ))}
