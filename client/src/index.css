@@ -1,0 +1,370 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables */
+:root {
+  --primary-gradient: linear-gradient(135deg, #2C3E50 0%, #3498DB 100%);
+  --secondary-gradient: linear-gradient(135deg, #34495E 0%, #2980B9 100%);
+  --dark-gradient: linear-gradient(135deg, #2C3E50 0%, #3498DB 100%);
+  --light-gradient: linear-gradient(135deg, #F5F7FA 0%, #E4E8EB 100%);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--light-gradient);
+  min-height: 100vh;
+  color: #2C3E50;
+}
+
+/* Navbar Styles */
+.nav {
+  background: var(--dark-gradient);
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav ul {
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+  list-style: none;
+}
+
+.nav-item button {
+  background: var(--secondary-gradient);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.nav-item button a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-item button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Login Form Styles */
+.form {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  width: 90%;
+  max-width: 400px;
+  margin: 8rem auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--primary-gradient);
+}
+
+.form h1 {
+  color: #2C3E50;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form label {
+  color: #2C3E50;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #E4E8EB;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition);
+  margin-bottom: 1.5rem;
+}
+
+.form input:focus {
+  border-color: #3498DB;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form button {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.2);
+}
+
+/* Kanban Board Styles */
+.board {
+  padding: 6rem 2rem 2rem;
+  min-height: 100vh;
+}
+
+.board-display {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.swim-lane {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  min-height: 80vh;
+}
+
+.swim-lane h2 {
+  color: #2C3E50;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #E4E8EB;
+}
+
+.todo h2 {
+  border-bottom-color: #3498DB;
+}
+
+.inprogress h2 {
+  border-bottom-color: #2980B9;
+}
+
+.done h2 {
+  border-bottom-color: #2C3E50;
+}
+
+.ticket-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+  border: 1px solid #E4E8EB;
+  transition: var(--transition);
+}
+
+.ticket-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-card h3 {
+  color: #2C3E50;
+  margin-bottom: 0.5rem;
+}
+
+.ticket-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Button Styles */
+.editBtn, .deleteBtn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  width: 80px;
+  text-align: center;
+  margin: 0 0.25rem;
+}
+
+.editBtn {
+  background: var(--secondary-gradient);
+  color: white;
+}
+
+.deleteBtn {
+  background: var(--primary-gradient);
+  color: white;
+}
+
+.editBtn:hover, .deleteBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Create Ticket Link */
+#create-ticket-link {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--secondary-gradient);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+#create-ticket-link a {
+  color: white;
+  text-decoration: none;
+}
+
+#create-ticket-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#create-ticket-link:hover a {
+  color: white;
+}
+
+/* Filters Container */
+.filters-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin: 1rem auto;
+  max-width: 1400px;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  color: #2C3E50;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.filter-group select {
+  padding: 0.5rem;
+  border: 2px solid #E4E8EB;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #2C3E50;
+  background: white;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-group select:focus {
+  border-color: #3498DB;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.sort-order-btn {
+  background: var(--secondary-gradient);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.sort-order-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .board-display {
+    grid-template-columns: 1fr;
+  }
+  
+  .form {
+    margin: 6rem auto;
+    padding: 2rem;
+  }
+  
+  .nav {
+    padding: 0.8rem 1rem;
+  }
+  
+  .nav-title {
+    font-size: 1.5rem;
+  }
+
+  .filters-container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .filter-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter-group select {
+    flex: 1;
+  }
+}
