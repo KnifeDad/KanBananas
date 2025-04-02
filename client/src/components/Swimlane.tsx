@@ -30,7 +30,7 @@ const Swimlane = ({ title, tickets, deleteTicket }: SwimlaneProps) => {
       {/* Render ticket cards for each ticket in this swimlane */}
       {tickets.map(ticket => (
         <TicketCard 
-          key={ticket.id}
+          key={ticket.id?.toString()}
           ticket={ticket}
           deleteTicket={deleteTicket}
         />

@@ -33,7 +33,7 @@ const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
       
       {/* Action buttons */}
       <Link to='/edit' state={{id: ticket.id}} type='button' className='editBtn'>Edit</Link>
-      <button type='button' value={String(ticket.id)} onClick={handleDelete} className='deleteBtn'>Delete</button>
+      <button type='button' value={ticket.id?.toString() || ''} onClick={handleDelete} className='deleteBtn'>Delete</button>
     </div>
   );
 };

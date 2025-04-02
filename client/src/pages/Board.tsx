@@ -85,13 +85,14 @@ const Board = () => {
       let comparison = 0;
       switch (sortBy) {
         case 'name':
-          comparison = a.name.localeCompare(b.name);
+          comparison = (a.name || '').localeCompare(b.name || '');
           break;
         case 'date':
-          comparison = new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+          // Since createdAt is not in the interface, we'll sort by ID as a fallback
+          comparison = (a.id || 0) - (b.id || 0);
           break;
         case 'status':
-          comparison = a.status.localeCompare(b.status);
+          comparison = (a.status || '').localeCompare(b.status || '');
           break;
         default:
           comparison = 0;
@@ -103,7 +104,7 @@ const Board = () => {
   // Filter tickets based on user and status
   const filterTickets = (tickets: TicketData[]) => {
     return tickets.filter(ticket => {
-      const matchesUser = filterUser === 'all' || ticket.assignedUserId === parseInt(filterUser);
+      const matchesUser = filterUser === 'all' || (ticket.assignedUserId?.toString() || '') === filterUser;
       const matchesStatus = filterStatus === 'all' || ticket.status === filterStatus;
       return matchesUser && matchesStatus;
     });
@@ -198,16 +199,16 @@ const Board = () => {
                 
                 return (
                   <Swimlane 
-                    title={status} 
-                    key={status} 
-                    tickets={filteredTickets} 
+                    key={status}
+                    title={status}
+                    tickets={filteredTickets}
                     deleteTicket={deleteIndvTicket}
                   />
                 );
               })}
             </div>
           </div>
-        )
+      )
     }
     </>
   );
