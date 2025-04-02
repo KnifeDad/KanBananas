@@ -7,9 +7,18 @@ import { UserFactory } from './user.js';
 import { TicketFactory } from './ticket.js';
 
 // Initialize Sequelize with database configuration
-// Uses either DATABASE_URL (for production) or individual connection parameters
-const sequelize = process.env.DB_URL
-  ? new Sequelize(process.env.DB_URL)
+// Uses DATABASE_URL for production (Render) or individual connection parameters for local development
+const sequelize = process.env.DATABASE_URL
+  ? new Sequelize(process.env.DATABASE_URL, {
+      dialect: 'postgres',
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      },
+      logging: false
+    })
   : new Sequelize(process.env.DB_NAME || '', process.env.DB_USER || '', process.env.DB_PASSWORD, {
       host: 'localhost',
       dialect: 'postgres',
