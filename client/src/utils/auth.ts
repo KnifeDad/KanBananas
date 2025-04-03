@@ -40,12 +40,12 @@ class AuthService {
 
   login(idToken: string) {
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/board');
+    window.location.href = '/board';
   }
 
   logout() {
     localStorage.removeItem('id_token');
-    window.location.assign('/');
+    window.location.href = '/';
   }
 }
 
