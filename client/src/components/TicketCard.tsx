@@ -24,23 +24,39 @@ const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
     }
   };
 
+  // Format the creation date
+  const formatDate = (dateString: string | null | undefined) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
   return (
     <div className='ticket-card'>
       {/* Display ticket information */}
       <h3>{ticket.name}</h3>
       <p>{ticket.description}</p>
-      <p>{ticket.assignedUser?.username}</p>
+      <p className="ticket-assignee">Assigned to: {ticket.assignedUser?.username || 'Unassigned'}</p>
+      <p className="ticket-date">Created: {formatDate(ticket.createdAt)}</p>
       
       {/* Action buttons */}
-      <Link to={`/edit/${ticket.id}`} className='editBtn'>Edit</Link>
-      <button 
-        type='button' 
-        onClick={handleDelete} 
-        className='deleteBtn'
-        disabled={!ticket.id}
-      >
-        Delete
-      </button>
+      <div className="ticket-actions">
+        <Link to={`/edit/${ticket.id}`} className='editBtn'>Edit</Link>
+        <button 
+          type='button' 
+          onClick={handleDelete} 
+          className='deleteBtn'
+          disabled={!ticket.id}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 };
