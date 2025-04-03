@@ -1,7 +1,6 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Auth from '../utils/auth';
 import { register } from "../api/authAPI";
 
 const Registration = () => {
