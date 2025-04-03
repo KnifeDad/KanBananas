@@ -85,8 +85,9 @@ const Board = () => {
           comparison = (a.name || '').localeCompare(b.name || '');
           break;
         case 'date':
-          // Since createdAt is not in the interface, we'll sort by ID as a fallback
-          comparison = (a.id || 0) - (b.id || 0);
+          const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+          const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+          comparison = dateA - dateB;
           break;
         case 'status':
           comparison = (a.status || '').localeCompare(b.status || '');

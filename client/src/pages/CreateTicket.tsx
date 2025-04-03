@@ -13,7 +13,8 @@ const CreateTicket = () => {
       description: '',
       status: 'Todo',
       assignedUserId: 1,
-      assignedUser: null
+      assignedUser: null,
+      createdAt: new Date().toISOString()
     }
   );
 
