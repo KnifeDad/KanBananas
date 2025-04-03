@@ -23,7 +23,7 @@ const Registration = () => {
     e.preventDefault();
     try {
       const data = await register(registrationData);
-      Auth.login(data.token);
+      localStorage.setItem('id_token', data.token);
       navigate('/board');
     } catch (err) {
       console.error('Failed to register', err);
