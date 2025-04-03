@@ -13,11 +13,11 @@ interface TicketCardProps {
 const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
   // Handle ticket deletion
   const handleDelete: MouseEventHandler<HTMLButtonElement> = async (event) => {
-    const ticketId = Number(event.currentTarget.value);
-    if (!isNaN(ticketId)) {
+    event.preventDefault();
+    const ticketId = ticket.id;
+    if (ticketId) {
       try {
-        const data = await deleteTicket(ticketId);
-        return data;
+        await deleteTicket(ticketId);
       } catch (error) {
         console.error('Failed to delete ticket:', error);
       }
@@ -32,8 +32,15 @@ const TicketCard = ({ ticket, deleteTicket }: TicketCardProps) => {
       <p>{ticket.assignedUser?.username}</p>
       
       {/* Action buttons */}
-      <Link to='/edit' state={{id: ticket.id}} type='button' className='editBtn'>Edit</Link>
-      <button type='button' value={ticket.id?.toString() || ''} onClick={handleDelete} className='deleteBtn'>Delete</button>
+      <Link to={`/edit/${ticket.id}`} className='editBtn'>Edit</Link>
+      <button 
+        type='button' 
+        onClick={handleDelete} 
+        className='deleteBtn'
+        disabled={!ticket.id}
+      >
+        Delete
+      </button>
     </div>
   );
 };

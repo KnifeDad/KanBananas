@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         loader: requireAuth
       },
       {
-        path: 'edit',
+        path: 'edit/:id',
         element: <EditTicket />,
         loader: requireAuth
       },
