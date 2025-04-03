@@ -2,7 +2,12 @@
 
 A fun and functional Kanban board application that helps you organize your tasks with a tropical twist! Built with React, TypeScript, and a sprinkle of banana magic.
 
-![KanBananas Board View](assets/kanbananas-board-view.png)
+## 🌐 Live Demo
+
+Try out KanBananas right now! Visit our live deployment:
+- Frontend: [https://kanbananas-frontend.onrender.com/](https://kanbananas-frontend.onrender.com/)
+
+![KanBananas Dashboard](assets/kanbananas-dashboard.png)
 
 ## 🌟 Features
 

@@ -14,8 +14,18 @@ import { sequelize } from './models/index.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Enable CORS for all routes
-app.use(cors());
+// Configure CORS based on environment
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? process.env.CLIENT_URL // Production frontend URL
+    : 'http://localhost:3000', // Development frontend URL
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+// Enable CORS with configured options
+app.use(cors(corsOptions));
 
 // Serves static files in the entire client's dist folder
 app.use(express.static('../client/dist'));
