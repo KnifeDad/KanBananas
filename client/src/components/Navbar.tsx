@@ -1,19 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../utils/auth';
 
 const Navbar = () => {
-  const [ loginCheck, setLoginCheck ] = useState(false);
-
-  const checkLogin = () => {
-    if(auth.loggedIn()) {
-      setLoginCheck(true);
-    }
-  };
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    checkLogin();
-  }, [loginCheck]);
+    const checkLoginStatus = () => {
+      setIsLoggedIn(auth.loggedIn());
+    };
+    
+    checkLoginStatus();
+    window.addEventListener('storage', checkLoginStatus);
+    
+    return () => {
+      window.removeEventListener('storage', checkLoginStatus);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    auth.logout();
+    setIsLoggedIn(false);
+    navigate('/');
+  };
 
   return (
     <div className='nav'>
@@ -21,7 +31,7 @@ const Navbar = () => {
         <Link to='/board'>Welcome to KanBananas: The Krazy Kanban Board</Link>
       </div>
       <ul>
-        {loginCheck && (
+        {isLoggedIn && (
           <>
             <li className='nav-item'>
               <button type='button'>
@@ -29,9 +39,7 @@ const Navbar = () => {
               </button>
             </li>
             <li className='nav-item'>
-              <button type='button' onClick={() => {
-                auth.logout();
-              }}>Logout</button>
+              <button type='button' onClick={handleLogout}>Logout</button>
             </li>
           </>
         )}
