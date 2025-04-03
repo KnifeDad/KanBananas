@@ -1,8 +1,9 @@
 import Auth from '../utils/auth';
+import { API_URL } from './config';
 
 const retrieveUsers = async () => {
   try {
-    const response = await fetch('/api/users', {
+    const response = await fetch(`${API_URL}/api/users`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Auth.getToken()}`
