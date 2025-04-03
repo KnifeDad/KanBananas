@@ -8,14 +8,23 @@ function App() {
 
   useEffect(() => {
     const checkLoginStatus = () => {
-      setIsLoggedIn(Auth.loggedIn());
+      const loggedIn = Auth.loggedIn();
+      console.log('App: Checking login status:', loggedIn);
+      setIsLoggedIn(loggedIn);
     };
     
+    // Check immediately
     checkLoginStatus();
+    
+    // Listen for storage changes
     window.addEventListener('storage', checkLoginStatus);
+    
+    // Check when auth state changes
+    const interval = setInterval(checkLoginStatus, 1000);
     
     return () => {
       window.removeEventListener('storage', checkLoginStatus);
+      clearInterval(interval);
     };
   }, []);
 

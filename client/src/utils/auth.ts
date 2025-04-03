@@ -45,18 +45,24 @@ class AuthService {
   }
 
   getToken(): string {
-    return localStorage.getItem('id_token') || '';
+    const token = localStorage.getItem('id_token');
+    console.log('Getting token:', token ? 'exists' : 'not found');
+    return token || '';
   }
 
   login(idToken: string) {
     console.log('Logging in with token');
     localStorage.setItem('id_token', idToken);
+    // Dispatch storage event to notify other components
+    window.dispatchEvent(new Event('storage'));
     window.location.href = '/board';
   }
 
   logout() {
     console.log('Logging out, removing token');
     localStorage.removeItem('id_token');
+    // Dispatch storage event to notify other components
+    window.dispatchEvent(new Event('storage'));
     window.location.href = '/';
   }
 }
