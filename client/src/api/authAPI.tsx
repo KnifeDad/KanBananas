@@ -1,7 +1,11 @@
-import { UserLogin } from "../interfaces/UserLogin";
 import { API_URL } from "./config";
 
-export const register = async (credentials: { username: string; password: string }) => {
+interface Credentials {
+  username: string;
+  password: string;
+}
+
+const register = async (credentials: Credentials) => {
   try {
     console.log('Attempting registration with:', credentials);
     const response = await fetch(`${API_URL}/auth/register`, {
@@ -27,7 +31,7 @@ export const register = async (credentials: { username: string; password: string
   }
 };
 
-const login = async (credentials: { username: string; password: string }) => {
+const login = async (credentials: Credentials) => {
   try {
     console.log('Attempting login with:', credentials);
     const response = await fetch(`${API_URL}/auth/login`, {
