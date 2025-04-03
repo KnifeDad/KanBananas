@@ -1,7 +1,6 @@
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 
 class AuthService {
-  private token: string | null = null;
   private navigate: ((path: string) => void) | null = null;
 
   setNavigate(navigate: (path: string) => void) {
