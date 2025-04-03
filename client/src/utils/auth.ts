@@ -51,7 +51,6 @@ class AuthService {
   }
 
   login(idToken: string) {
-    console.log('Logging in with token');
     localStorage.setItem('id_token', idToken);
     // Dispatch storage event to notify other components
     window.dispatchEvent(new Event('storage'));
