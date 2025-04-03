@@ -8,6 +8,8 @@ import ErrorPage from './pages/ErrorPage.tsx';
 import EditTicket from './pages/EditTicket.tsx';
 import CreateTicket from './pages/CreateTicket.tsx';
 import Login from './pages/Login.tsx';
+import Registration from './pages/Registration.tsx';
+import Auth from './utils/auth';
 
 const router = createBrowserRouter([
   {
@@ -17,23 +19,27 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Board />
-      }, 
+        element: <Login />
+      },
       {
-        path: '/edit',
+        path: 'register',
+        element: <Registration />
+      },
+      {
+        path: 'board',
+        element: Auth.loggedIn() ? <Board /> : <Login />
+      },
+      {
+        path: 'edit',
         element: <EditTicket />
       },
       {
-        path: '/create',
+        path: 'create',
         element: <CreateTicket />
-      },
-      {
-        path: '/login',
-        element: <Login />
       }
     ]
   }
-])
+]);
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
