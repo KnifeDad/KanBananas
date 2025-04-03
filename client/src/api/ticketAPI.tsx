@@ -56,22 +56,20 @@ const createTicket = async (body: TicketData) => {
     const response = await fetch(
       `${API_URL}/api/tickets/`, {
         method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${Auth.getToken()}`
-          },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${Auth.getToken()}`
+        },
         body: JSON.stringify(body)
       }
-
-    )
-    const data = response.json();
+    );
+    const data = await response.json();
 
     if(!response.ok) {
       throw new Error('invalid API response, check network tab!');
     }
 
     return data;
-
   } catch (err) {
     console.log('Error from Ticket Creation: ', err);
     return Promise.reject('Could not create ticket');

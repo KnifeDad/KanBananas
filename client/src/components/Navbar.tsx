@@ -19,12 +19,8 @@ const Navbar = () => {
     // Listen for storage changes
     window.addEventListener('storage', checkLoginStatus);
     
-    // Check periodically to catch token expiration
-    const interval = setInterval(checkLoginStatus, 1000);
-    
     return () => {
       window.removeEventListener('storage', checkLoginStatus);
-      clearInterval(interval);
     };
   }, []);
 

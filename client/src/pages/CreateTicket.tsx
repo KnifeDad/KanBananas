@@ -37,9 +37,13 @@ const CreateTicket = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (newTicket){
-      const data = await createTicket(newTicket);
-      console.log(data);
-      navigate('/');
+      try {
+        const data = await createTicket(newTicket);
+        console.log('Ticket created successfully:', data);
+        navigate('/board');
+      } catch (error) {
+        console.error('Failed to create ticket:', error);
+      }
     }
   }
 
