@@ -8,18 +8,28 @@ const Navbar = () => {
 
   useEffect(() => {
     const checkLoginStatus = () => {
-      setIsLoggedIn(auth.loggedIn());
+      const loggedIn = auth.loggedIn();
+      console.log('Checking login status:', loggedIn);
+      setIsLoggedIn(loggedIn);
     };
     
+    // Check immediately
     checkLoginStatus();
+    
+    // Listen for storage changes
     window.addEventListener('storage', checkLoginStatus);
+    
+    // Check periodically to catch token expiration
+    const interval = setInterval(checkLoginStatus, 1000);
     
     return () => {
       window.removeEventListener('storage', checkLoginStatus);
+      clearInterval(interval);
     };
   }, []);
 
   const handleLogout = () => {
+    console.log('Logging out...');
     auth.logout();
     setIsLoggedIn(false);
     navigate('/');
