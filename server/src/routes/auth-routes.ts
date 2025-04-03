@@ -25,14 +25,10 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-    console.log('Password hashed successfully');
-
-    // Create new user
+    // Create new user (password will be hashed by the model hook)
     const user = await User.create({
       username,
-      password: hashedPassword
+      password
     });
     console.log('User created successfully:', { id: user.id, username: user.username });
 
