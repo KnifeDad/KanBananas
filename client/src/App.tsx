@@ -1,12 +1,16 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { useState, useEffect } from 'react';
 import Auth from './utils/auth';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // Provide navigation function to Auth utility
+    Auth.setNavigate(navigate);
+
     const checkLoginStatus = () => {
       const loggedIn = Auth.loggedIn();
       console.log('App: Checking login status:', loggedIn);
@@ -26,7 +30,7 @@ function App() {
       window.removeEventListener('storage', checkLoginStatus);
       clearInterval(interval);
     };
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="container">
