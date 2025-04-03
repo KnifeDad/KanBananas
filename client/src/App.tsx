@@ -4,8 +4,6 @@ import Registration from './pages/Registration';
 import Board from './pages/Board';
 import Auth from './utils/auth';
 
-import Navbar from './components/Navbar';
-
 function App() {
   return (
     <Router>
