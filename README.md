@@ -93,6 +93,26 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Have questions or suggestions? Open an issue or reach out to the maintainers!
 
+## 👥 Meet the Team
+
+### The Dynamic Duo 🦸‍♂️🦸‍♀️
+
+We're not just developers, we're BFFs who turned our coding sessions into a tropical task management paradise! When we're not pair-programming and finishing each other's code (and sentences), we're probably debating whether bananas belong on pizza (they do, fight us!).
+
+#### Guy Ricketts (KnifeDad) 🍳
+- The mastermind behind the banana magic
+- Known for his sharp wit and even sharper code
+- When not coding, he's probably thinking about coding
+- [GitHub](https://github.com/KnifeDad)
+
+#### Muhsina Shinwari 🌟
+- The queen of task management and verbal Jiu-Jitsu
+- Turns coffee into code (and occasionally into more coffee)
+- Has a secret talent for finding bugs before they happen
+- [GitHub](https://github.com/Muhsina-de)
+
+Together, we're like a well-oiled machine, except we run on coffee, code, and dad jokes. Our pair-programming sessions are legendary - we're so in sync, we sometimes forget which one of us wrote which line of code!
+
 ---
 
-Made with 🍌 by KnifeDad 
+Made with 🍌 by KnifeDad and Muhsina 
