@@ -23,7 +23,7 @@ Try out KanBananas right now! Visit our live deployment:
 
 - **Frontend**: React, TypeScript, CSS3
 - **Backend**: Node.js, Express
-- **Database**: MySQL
+- **Database**: PostgreSQL
 - **Authentication**: JWT
 - **Styling**: Custom CSS with modern gradients and animations
 
@@ -32,7 +32,7 @@ Try out KanBananas right now! Visit our live deployment:
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- MySQL
+- PostgreSQL
 - npm
 
 ### Installation
